@@ -1,0 +1,24 @@
+
+POST http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+    "email": "e123m12di@s.com",
+    "password": "khasdedari"
+}
+
+### Find a particular user
+GET http://localhost:3000/auth/2
+
+###
+GET http://localhost:3000/auth?email=emaasdi@s.com
+### remove user
+DELETE  http://localhost:3000/auth/1
+###
+
+PATCH http://localhost:3000/auth/2
+content-type: application/json
+
+{
+    "password" : "12345678"
+}
