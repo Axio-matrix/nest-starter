@@ -1,0 +1,6 @@
+node_modules
+src
+test
+.git
+.env.development
+.env.test

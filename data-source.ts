@@ -28,7 +28,15 @@ switch (env) {
     break;
 
   case 'production':
-    // change this to postgres or mysql if needed in prod
+    Object.assign(options, {
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      migrationsRun: true,
+      entities: [path.join(__dirname, '/../**/*.entity.js')],
+      ssl: {
+        rejectUnauthorized: false 
+      }
+    })
     break;
 
   default:
