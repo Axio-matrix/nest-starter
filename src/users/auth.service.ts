@@ -25,6 +25,7 @@ export class AuthService {
     const hashedPassword = salt + '.' + hash.toString('hex');
 
     const user = await this.UserService.create(email, hashedPassword);
+
     return user;
   }
 

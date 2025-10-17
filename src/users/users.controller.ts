@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -42,10 +43,17 @@ export class UsersController {
     session.userId = user.id;
     return user;
   }
+
   @UseGuards(AuthGuard)
   @Get('/whoiam')
   async whoIam(@CurrentUser() user: User) {
+    if (!user) {
+      throw new BadRequestException('Bad request')
+    }
     const currentUser = await this.usersService.findOne(user.id);
+    if (!currentUser) {
+      throw new NotFoundException('User not Found')
+    }
     return currentUser;
   }
 

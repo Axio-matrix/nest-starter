@@ -17,10 +17,13 @@ export class User {
   @Column()
   email: string;
 
+  @Column({ default: true})
+  admin: boolean;
+
   @Column()
   password: string;
 
-  @OneToMany(() => Report, (report) => report.users)
+  @OneToMany(() => Report, (report) => report.user)
   reports: Report[];
 
   @AfterInsert()

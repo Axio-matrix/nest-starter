@@ -9,6 +9,9 @@ export class Report {
   @Column()
   price: number;
 
+  @Column({ default: false })
+  approved: boolean;
+
   @Column()
   make: string;
 
@@ -28,5 +31,5 @@ export class Report {
   year: number;
 
   @ManyToOne(() => User, (user) => user.reports)
-  users: User;
+  user: User;
 }
